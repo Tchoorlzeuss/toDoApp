@@ -1,0 +1,67 @@
+body
+{
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+#header
+{
+  background-image: url('../img/sep_header.gif');
+  background-repeat: repeat-x;
+  background-position: bottom;
+  padding-bottom: 24px;
+}
+
+#header h1
+{
+  font-size: 2.5em;
+}
+
+section
+{
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  border: 1px black solid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.tasks
+{
+  display: inline-block;
+  width: 331px;
+}
+
+.checkboxes
+{
+  display: inline-block;
+  width: 30px;
+}
+
+.editTask
+{
+  display: inline-block;
+  width: 360px;
+  padding-right: 5px;
+}
+
+.repeat
+{
+  height: 21px;
+}
+
+input, #label
+{
+  width: 100%;
+  border: none;
+  text-align: left;
+}
+
+.completedTask
+{
+  color: gray;
+  text-decoration: line-through;
+}
