@@ -35,6 +35,9 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       });
+<<<<<<< HEAD
       
+=======
+>>>>>>> 687d51ff183ddb16bfa400e0097e14a149438edf
     $urlRouterProvider.otherwise("/");
   });

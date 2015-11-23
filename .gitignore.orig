@@ -3,6 +3,8 @@
 /.tmp
 /.sass-cache
 /bower_components
+<<<<<<< HEAD
+=======
 
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
@@ -53,3 +55,4 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+>>>>>>> 687d51ff183ddb16bfa400e0097e14a149438edf

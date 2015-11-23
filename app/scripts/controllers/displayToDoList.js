@@ -25,8 +25,13 @@ angular.module('toDoAppApp')
     	$scope.taskToAdd = "";
     };
 
+<<<<<<< HEAD
     $scope.removeToDo = function(toDo){
     	$scope.toDos.splice($scope.toDos.indexOf(toDo), 1);
+=======
+    $scope.removeToDo = function(index){
+    	$scope.toDos.splice(index, 1);
+>>>>>>> 687d51ff183ddb16bfa400e0097e14a149438edf
     };
 
     $scope.editToDo = function(toDo){
@@ -40,8 +45,13 @@ angular.module('toDoAppApp')
     }, true);
 
     $scope.$watch('toDos', function(){
+<<<<<<< HEAD
 	    $scope.remainingTasks = filterFilter($scope.toDos, {completed: false}).length;
 	    $scope.isPlurial = $rootScope.remainingTasks > 1 ? 's' : '';
+=======
+	    $rootScope.remainingTasks = filterFilter($scope.toDos, {completed: false}).length;
+	    $rootScope.isPlurial = $rootScope.remainingTasks > 1 ? 's' : '';
+>>>>>>> 687d51ff183ddb16bfa400e0097e14a149438edf
 	    if($rootScope.remainingTasks === 0)
 	    	$rootScope.remainingTasks = 'Aucune';
 	    $scope.allCompleted = filterFilter($scope.toDos, {completed: true}).length === $scope.toDos.length;
