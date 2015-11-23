@@ -1,0 +1,45 @@
+body
+{
+	overflow: hidden;
+}
+
+.noPadding
+{
+	padding: 0px;
+}
+
+.padding
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.repeatContent
+{
+	padding: 0px;
+	margin: 0px;
+	overflow: hidden;
+}
+
+#toDoContent
+{
+	overflow-scrolling: touch;
+	overflow: scroll;
+}
+
+.displayTask
+{
+	margin-left: 2px;
+}
+
+input[type="text"]
+{
+	margin-right: 5px;
+	margin-bottom: 2px;
+}
+
+md-checkbox
+{
+	padding: 3px;
+	margin: 0px;
+}

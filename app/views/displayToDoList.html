@@ -1,0 +1,34 @@
+<md-content layout="column" layout-fill>
+  <md-content flex id="toDoContent">
+    <form name="newToDo" ng-submit="addToDo()" layout="row">
+      <md-input-container flex="10" class="noPadding" layout-align="center center">
+        <md-checkbox type="checkbox" aria-label="allDone" ng-model="allCompleted" ng-click="toggleAll(allCompleted)" ng-show="toDos.length > 0" ></md-checkbox>
+      </md-input-container>
+
+      <md-input-container md-no-float="true" flex class="noPadding">
+        <input autocomplete="off" type="text" placeholder="Nouvelle tâche" ng-model="taskToAdd" maxlength="50" autofocus="true" id="newToDo" />
+      </md-input-container>
+    </form>
+
+    <md-content class="repeatContent" ng-repeat="toDo in toDos | orderBy:'completed' track by $index" layout="row" layout-align="center center">
+      <md-input-container ng-hide="toDo.isEdited" flex="10" class="noPadding" layout="column" layout-align="center center">
+        <md-checkbox type="checkbox" ng-model="toDo.completed" aria-label="completed" flex="10"></md-checkbox>
+      </md-input-container>
+
+      <md-content ng-hide="toDo.isEdited" ng-class="{completed: toDo.completed}" ng-dblClick="toDo.isEdited = true" class="padding displayTask" layout="column" ng-swipe-right="removeToDo(toDo)" flex>
+        {{toDo.task}}
+      </md-content>
+
+      <form ng-submit="editToDo(toDo)" ng-show="toDo.isEdited" layout="row">
+        <span flex="10"></span>
+        <md-input-container md-no-float="true" class="noPadding" flex>
+          <input autocomplete="off" type="text" ng-model="toDo.task" aria-label="toDo.task" ng-blur="editToDo(toDo)" maxlength="50" class="editToDo" />
+        </md-input-container>
+      </form>
+    </md-content>
+  </md-content>
+  
+  <md-content layout="row" layout-align="center center" class="md-whiteframe-z2">
+    {{remainingTasks}} tâche{{isPlurial}} restante{{isPlurial}}.
+  </md-content>
+</md-content>
