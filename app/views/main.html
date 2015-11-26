@@ -1,1 +1,9 @@
-<p>This is the main view.</p>
+<md-content>
+  <md-input-container>
+    <label>ToDo's title</label>
+    <input aria-label="ToDo's title" autocomplete="off" ng-model="toDoTitle" />
+  </md-input-container>
+  <div layout="row" layout-align="end center">
+    <md-button ng-click="addToDo()">Create</md-button>
+  </div>
+</md-content>

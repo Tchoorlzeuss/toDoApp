@@ -9,11 +9,16 @@
  */
 
 angular.module('toDoAppApp')
-  .controller('displayToDoListCtrl', function ($scope, filterFilter, $rootScope, $stateParams, $location) {
-    if(localStorage[$stateParams.listId])
-    	$scope.toDos = JSON.parse(localStorage[$stateParams.listId]);
+  .controller('displayToDoListCtrl', function ($scope, filterFilter, $rootScope, $stateParams, $location, $state) {
+    $scope.title = $stateParams.listId;
+    if(localStorage[$scope.title])
+    	$scope.toDos = JSON.parse(localStorage[$scope.title]);
+    else if(localStorage[$scope.title] === '')
+      $scope.toDos = [];
   	else
-    	$scope.toDos = [];
+    	$state.go('/new');
+
+    $scope.titleIsEdited = false;
 
     $scope.addToDo = function(){
     	if($scope.taskToAdd)
@@ -23,36 +28,45 @@ angular.module('toDoAppApp')
 	    		completed: false
 	    	});
     	$scope.taskToAdd = "";
+      localStorage[$scope.title] = JSON.stringify($scope.toDos);
     };
+
+    $scope.saveChange = function(){
+      localStorage[$scope.title] = JSON.stringify($scope.toDos);
+    };
+
+    $scope.deleteList = function(){
+      $scope.toDoNav.splice($scope.toDoNav.indexOf($scope.title), 1);
+      localStorage.removeItem($scope.title);
+      $state.go('/new');
+      $location.path('/');
+    }
+
     $scope.removeToDo = function(toDo){
     	$scope.toDos.splice($scope.toDos.indexOf(toDo), 1);
-    $scope.removeToDo = function(index){
-    	$scope.toDos.splice(index, 1);
+      localStorage[$scope.title] = JSON.stringify($scope.toDos);
     };
 
     $scope.editToDo = function(toDo){
     	toDo.isEdited = false;
+      localStorage[$scope.title] = JSON.stringify($scope.toDos);
     };
 
-    $scope.$watch('allCompleted', function(){
-    	$scope.toDos.forEach(function(toDo){
-      		toDo.completed = $scope.allCompleted;
-  		});
-    }, true);
+    $scope.toggleAllCompleted = function(){
+      $scope.toDos.forEach(function(toDo){
+          toDo.completed = $scope.allCompleted;
+      });
+      localStorage[$scope.title] = JSON.stringify($scope.toDos);
+    };
 
     $scope.$watch('toDos', function(){
-
 	    $scope.remainingTasks = filterFilter($scope.toDos, {completed: false}).length;
 	    $scope.isPlurial = $rootScope.remainingTasks > 1 ? 's' : '';
-
-	    $rootScope.remainingTasks = filterFilter($scope.toDos, {completed: false}).length;
-	    $rootScope.isPlurial = $rootScope.remainingTasks > 1 ? 's' : '';
-
 	    if($rootScope.remainingTasks === 0)
 	    	$rootScope.remainingTasks = 'Aucune';
 	    $scope.allCompleted = filterFilter($scope.toDos, {completed: true}).length === $scope.toDos.length;
-	    localStorage[$stateParams.listId] = JSON.stringify($scope.toDos);
 	}, true);
+  });
 
   angular.module('toDoAppApp').directive('ngBlur', function(){
   	return function(scope, elem, attrs){
@@ -60,4 +74,4 @@ angular.module('toDoAppApp')
   			scope.$apply("attrs.ngBlur");
   		});
   	};
-  });}
+  });

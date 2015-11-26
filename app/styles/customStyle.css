@@ -21,10 +21,11 @@ body
 	overflow: hidden;
 }
 
-#toDoContent
+.scrollableY
 {
 	overflow-scrolling: touch;
-	overflow: scroll;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .displayTask

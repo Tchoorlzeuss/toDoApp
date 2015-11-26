@@ -30,10 +30,12 @@ angular
         controllerAs: 'displayToDoList',
         url: "/toDo/:listId"
       })
-      .state('/', {
+      .state('/new', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        url: "/new"
       });
-    $urlRouterProvider.otherwise("/");
+
+    $urlRouterProvider.otherwise('/new');
   });

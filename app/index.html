@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="styles/customStyle.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="toDoAppApp" layout="column">
+  <body ng-app="toDoAppApp" layout="column" ng-controller="indexCtrl">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -34,21 +34,18 @@
     </md-toolbar>
 
     <md-content layout="row" flex>
-      <md-sideNav ng-controller="indexCtrl" layout="column" md-component-id="left" class="md-whiteframe-z3" flex md-is-locked-open="$mdMedia('gt-sm')">
-        Coucou
+      <md-sideNav layout="column" md-component-id="left" class="md-whiteframe-z3" flex md-is-locked-open="$mdMedia('gt-sm')">
+        <input placeholder="Search a list" ng-model="listFilter" type="text" style='border: none' />
+        <md-list layout="column" layout-align="start center" flex class="scrollableY">
+          <md-list-item ng-repeat="toDoId in toDoNav | filter:listFilter track by $index">
+            <md-button ng-click="goToToDo(toDoId)">{{toDoId}}</md-button>
+          </md-list-item>
+        </md-list>
+        <md-button ng-click="goToNewToDo()" class="md-raised">Create a new ToDo list</md-button>
       </md-sideNav>
 
       <md-content layout="column" flex ui-view>
       </md-content>
-    <md-toolbar layout="row" layout-align="center" class="md-whiteframe-z2">
-      <h1>ToDoList App</h1>
-    </md-toolbar>
-
-    <md-content flex id="toDoContent" ui-view>
-    </md-content>
-
-    <md-content layout="row" layout-align="center center" class="md-whiteframe-z2">
-      {{remainingTasks}} tâche{{isPlurial}} restante{{isPlurial}}
     </md-content>
 
 
@@ -87,10 +84,7 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/displayToDoList.js"></script>
         <script src="scripts/controllers/main.js"></script>
-<<<<<<< HEAD
         <script src="scripts/controllers/indexCtrl.js"></script>
-=======
->>>>>>> 687d51ff183ddb16bfa400e0097e14a149438edf
         <!-- endbuild -->
 </body>
 </html>
