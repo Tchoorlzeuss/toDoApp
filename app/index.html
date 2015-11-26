@@ -36,7 +36,7 @@
     <md-content layout="row" flex>
       <md-sideNav layout="column" md-component-id="left" class="md-whiteframe-z3" flex md-is-locked-open="$mdMedia('gt-sm')">
         <input placeholder="Search a list" ng-model="listFilter" type="text" style='border: none' />
-        <md-list layout="column" layout-align="start center" flex class="scrollableY">
+        <md-list layout="column" flex class="scrollableY">
           <md-list-item layout="row" ng-repeat="toDoId in toDoNav | filter:listFilter | orderBy: toDoId track by $index">
             <md-button ng-click="goToToDo(toDoId)" flex>{{toDoId}}</md-button>
           </md-list-item>
