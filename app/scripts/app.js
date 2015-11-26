@@ -31,9 +31,9 @@ angular
         url: "/toDo/:listId"
       })
       .state('/new', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main',
+        templateUrl: 'views/newToDo.html',
+        controller: 'NewToDoCtrl',
+        controllerAs: 'newToDo',
         url: "/new"
       });
 

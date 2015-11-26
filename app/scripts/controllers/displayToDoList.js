@@ -36,10 +36,13 @@ angular.module('toDoAppApp')
     };
 
     $scope.deleteList = function(){
-      $scope.toDoNav.splice($scope.toDoNav.indexOf($scope.title), 1);
-      localStorage.removeItem($scope.title);
-      $state.go('/new');
-      $location.path('/');
+      if(confirm('You are about to delete the "' + $scope.title + '" list. Are you sure ?'))
+      {
+        $scope.toDoNav.splice($scope.toDoNav.indexOf($scope.title), 1);
+        localStorage.removeItem($scope.title);
+        $state.go('/new');
+        $location.path('/');
+      }
     }
 
     $scope.removeToDo = function(toDo){

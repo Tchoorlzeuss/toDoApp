@@ -8,7 +8,7 @@
  * Controller of the toDoAppApp
  */
 angular.module('toDoAppApp')
-  .controller('MainCtrl', function ($scope, $location, $state) {
+  .controller('NewToDoCtrl', function ($scope, $location, $state) {
     $scope.addToDo = function(){
       if($scope.toDoTitle !== '')
       {
